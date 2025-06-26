@@ -19,7 +19,7 @@ def clean_text(text):
   text=re.sub(r"shouldn't","should not",text)
   text=re.sub(r"wouldn't","would not",text)
   text=re.sub(r"couldn't","could not",text)
-  text=re.sub(r"/+d",'',text)
+  text=re.sub(r"\+d",'',text)
   text=re.sub(r"[-()\"#/@;:<>{}`+=~|.!?,]",'',text)
   text=text.translate(str.maketrans('','',string.punctuation))
   text=re.sub(r"\s+"," ",text)
@@ -35,8 +35,8 @@ if st.button("Predict"):
     cleaned=clean_text(input_sms)
     vector=tfidf.transform([cleaned])
     prob = model.predict_proba(vector)[0][1]
-    prediction = (prob > 0.35).astype(int)
-    if prediction[0]==0:
+    prediction = (prob > 0.35).astype(int) 
+    if prediction ==0:
       st.success("Not Spam")
     else:
       st.error("Spam")
