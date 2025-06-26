@@ -35,7 +35,7 @@ if st.button("Predict"):
     cleaned=clean_text(input_sms)
     vector=tfidf.transform([cleaned])
     prob = model.predict_proba(vector)[0][1]
-    prediction = (prob > 0.35).astype(int) 
+    prediction = (prob > 0.29).astype(int) 
     if prediction ==0:
       st.success("Not Spam")
     else:
