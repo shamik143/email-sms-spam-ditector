@@ -27,7 +27,7 @@ def clean_text(text):
 tfidf = joblib.load("tfidf_vectorizer.pkl")
 model = joblib.load("spam_model.pkl")
 st.title("Spam Detection(Email/SMS)")
-input_sms=st.text_area("Enter Your Email or SMS:",hieght=300)
+input_sms=st.text_area("Enter Your Email or SMS:",height=300)
 if st.button("Predict"):
   if input_sms.strip() == "":
         st.warning("Please enter some text.")
